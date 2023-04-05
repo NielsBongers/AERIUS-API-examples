@@ -1,5 +1,5 @@
 # GML files
-GML/
+GML/*.gml
 
 # Reports 
 Reports/*.zip
