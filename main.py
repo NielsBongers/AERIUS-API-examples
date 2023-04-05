@@ -4,6 +4,7 @@ import logging
 import requests
 from pathlib import Path 
 
+
 def get_logger(logger_name): 
     Path("Logs").mkdir(parents=True, exist_ok=True) 
     
@@ -21,6 +22,7 @@ def get_logger(logger_name):
 
 
 def request_api_key(email_address: str) -> None: 
+    logger = get_logger(__name__) 
     """Request API key to be sent to your email. 
 
     Args:
@@ -35,7 +37,12 @@ def request_api_key(email_address: str) -> None:
         'email': email_address,
     }
 
-    response = requests.post('https://connect.aerius.nl/api/v7/user/generateApiKey', headers=headers, json=json_data)
+    response = requests.post('https://connect.aerius.nl/api/v7/user/generateApiKey', headers=headers, json=json_data) 
+    
+    logger.info(f"Status code returned: {response.status_code}")
+    
+    return response.status_code 
+
 
 def upload_gml(gml_file_name: str, api_key: str) -> str: 
     """Uploads the specified GML and starts running the model. 
@@ -85,6 +92,7 @@ def get_status(job_key: str, api_key: str) -> str:
 
     return status 
     
+
 def download_result(job_key: str, api_key: str, file_dest: str) -> None: 
     """Downloads the ZIP containing the GML report. 
 
@@ -132,4 +140,5 @@ def get_report() -> None:
     
     
 if __name__ == "__main__": 
+    # request_api_key("[your email]")
     get_report() 

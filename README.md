@@ -2,7 +2,7 @@
 
 ## Introduction 
 
-AERIUS has some [documentation available online](https://connect.aerius.nl/api/), but no active Python examples. Their [GitLab repository](https://gitlab.com/AERIUS/aerius-connect-examples) didn't work for me, and their help desk confirmed that only the Swagger documentation is current. That also has some issues though: when uploading the GML files, the example seems to generate incorrect JSON information, with brackets in the wrong place (they [mention this](https://connect.aerius.nl/api/?urls.primaryName=WNB%20berekeningen) in the documentation themselves). All in all, I found it confusing to get the Python API working, and saw no other examples on GitHub. 
+AERIUS has some [documentation available online](https://connect.aerius.nl/api/), but no active Python examples. Their [GitLab repository](https://gitlab.com/AERIUS/aerius-connect-examples) didn't work for me, and their help desk confirmed that only the Swagger documentation is current. That also has some issues though: when uploading the GML files, the example seems to generate incorrect JSON information, with brackets in the wrong place (they [mention this](https://connect.aerius.nl/api/?urls.primaryName=WNB%20berekeningen) in the documentation themselves). All in all, I found it confusing to get the Python API working, and saw no other examples on GitHub, so I decided to write some, out of curiosity. 
 
 The code is very rudimentary, but it works well enough, and should serve as a basis for adding more functions as needed. 
 
@@ -12,6 +12,10 @@ You place a GML file (generated through the AERIUS web calculator, exporting _In
 
 It usually takes around a minute to run everything. Once it's done, the service sends back a ZIP containing another GML file with a huge amount of information (~5 MB compressed, 126 MB uncompressed). 
 
+## Future changes 
+
+I may add command line arguments to make it easier to use. However, given the current simplicity of the code, editing it directly is probably preferable. 
+
 ## Requesting API key 
 
-To start, you have to generate an API key. I advise doing that via [their website](https://connect.aerius.nl/api/?urls.primaryName=Gemeenschappelijk#/user/generateApiKey) (under _Try it out_). 
+To start, you have to generate an API key. I advise doing that via [their website](https://connect.aerius.nl/api/?urls.primaryName=Gemeenschappelijk#/user/generateApiKey) (under _Try it out_). You can also do it via the code, with ```request_api_key```. You can then set that in the code. 
