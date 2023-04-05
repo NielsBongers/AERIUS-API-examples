@@ -115,11 +115,17 @@ def download_result(job_key: str, api_key: str, file_dest: str) -> None:
             
             
 def get_report() -> None: 
-    """Example for the report generation. 
+    """Example for the report generation. Set your API key here. 
     """
     logger = get_logger(__name__) 
+    
+    # Specify API key. 
     api_key = "[...]" 
+    
+    # Set your file. 
     gml_file = "test2.gml" 
+    
+    # Set the destination file name in the Reports folder. 
     file_dest = "output.zip"
     
     logger.info(f"Sending {gml_file}.")

@@ -8,7 +8,19 @@ The code is very rudimentary, but it works well enough, and should serve as a ba
 
 ## Overview 
 
-You place a GML file (generated through the AERIUS web calculator, exporting _Invoerbestanden_ after entering all the information) into the GML folder. Those are basically XML files, so you can modify them after, but I found it helpful to have the initial set-up. You then set your API key, point the code to your GML file, set a desired output file name, and let it run. 
+You place a GML file (generated through the AERIUS web calculator, exporting _Invoerbestanden_ after entering all the information) into the GML folder. Those are basically XML files, so you can modify them after, but I found it helpful to have the initial set-up. You then set your API key in the ```get_report()``` function. 
+
+```python
+def get_report() -> None: 
+    """Example for the report generation. Set your API key here. 
+    """
+    logger = get_logger(__name__) 
+    api_key = "[...]" 
+    gml_file = "test2.gml" 
+    file_dest = "output.zip"
+```
+
+ point the code to your GML file, set a desired output file name, and let it run. 
 
 It usually takes around a minute to run everything. Once it's done, the service sends back a ZIP containing another GML file with a huge amount of information (~5 MB compressed, 126 MB uncompressed). 
 
