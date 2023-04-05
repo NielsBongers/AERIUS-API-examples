@@ -66,7 +66,7 @@ def download_result(job_key, api_key, file_dest):
             
 def main(): 
     logger = get_logger(__name__) 
-    api_key = "f57c690b4cbf476684047f3293a0ac13" 
+    api_key = "[...]" 
     gml_file = "test2.gml" 
     file_dest = "output.zip"
     
