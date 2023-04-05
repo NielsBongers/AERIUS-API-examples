@@ -19,3 +19,9 @@ I may add command line arguments to make it easier to use. However, given the cu
 ## Requesting API key 
 
 To start, you have to generate an API key. I advise doing that via [their website](https://connect.aerius.nl/api/?urls.primaryName=Gemeenschappelijk#/user/generateApiKey) (under _Try it out_). You can also do it via the code, with ```request_api_key```. You can then set that in the code. 
+
+## Disclaimer 
+
+I don't see any information about rate limitations on the website, and didn't encounter issues even when running the code a few times during debugging. I would advise keeping the status query rate high though (one second by default) and not sending too many report requests at once though. 
+
+I made this over the weekend because I got curious if I could get it working - this is not a serious project. 
