@@ -30,7 +30,7 @@ I may add command line arguments to make it easier to use. However, given the cu
 
 ## Requesting API key 
 
-To start, you have to generate an API key. I advise doing that via [their website](https://connect.aerius.nl/api/?urls.primaryName=Gemeenschappelijk#/user/generateApiKey) (under _Try it out_). You can also do it via the code, with ```request_api_key```. You can then set that in the code. 
+To start, you have to generate an API key. I advise doing that via [their website](https://connect.aerius.nl/api/?urls.primaryName=Gemeenschappelijk#/user/generateApiKey) (under _Try it out_). You can also do it via the code, with ```request_api_key```. You can then set that in the code. You'll get an email back with the API key in there. 
 
 ## Disclaimer 
 
