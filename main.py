@@ -35,7 +35,7 @@ def request_api_key(email_address: str) -> None:
         'email': email_address,
     }
 
-response = requests.post('https://connect.aerius.nl/api/v7/user/generateApiKey', headers=headers, json=json_data)
+    response = requests.post('https://connect.aerius.nl/api/v7/user/generateApiKey', headers=headers, json=json_data)
 
 def upload_gml(gml_file_name: str, api_key: str) -> str: 
     """Uploads the specified GML and starts running the model. 
