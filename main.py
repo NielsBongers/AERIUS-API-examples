@@ -20,14 +20,40 @@ def get_logger(logger_name):
     return logging.getLogger(logger_name)
 
 
-def upload_gml(gml_file_name, api_key): 
+def request_api_key(email_address: str) -> None: 
+    """Request API key to be sent to your email. 
+
+    Args:
+        email_address (str): Email address. 
+    """
+    headers = {
+    'accept': '*/*',
+    'Content-Type': 'application/json',
+    }
+
+    json_data = {
+        'email': email_address,
+    }
+
+response = requests.post('https://connect.aerius.nl/api/v7/user/generateApiKey', headers=headers, json=json_data)
+
+def upload_gml(gml_file_name: str, api_key: str) -> str: 
+    """Uploads the specified GML and starts running the model. 
+
+    Args:
+        gml_file_name (str): File name of your GML, in the Reports folder. 
+        api_key (str): Your API key. 
+
+    Returns:
+        str: Job key for the upload. 
+    """
     headers = {
         'accept': 'application/json',
         'api-key': api_key,
     }
 
     files = {
-        'options': (None, '{"name": "string","calculationYear": 2023,"sendEmail": true,"outputType": "GML","calculationPointsType": "WNB_RECEPTORS","receptorSetName": "string","appendices": [  "EDGE_EFFECT_REPORT"]\n}'),
+        'options': (None, '{"name": "string","calculationYear": 2023,"sendEmail": false,"outputType": "GML","calculationPointsType": "WNB_RECEPTORS","receptorSetName": "string","appendices": [  "EDGE_EFFECT_REPORT"]\n}'),
         'files': (None, '[{"fileName": "' + gml_file_name + '","situation": "REFERENCE","groupId": 0,"substance": "NH3","calculationYear": 2023\n}]'),
         'fileParts': open(Path("GML", gml_file_name), 'rb')
     }
@@ -39,7 +65,16 @@ def upload_gml(gml_file_name, api_key):
     return job_key 
 
 
-def get_status(job_key, api_key): 
+def get_status(job_key: str, api_key: str) -> str: 
+    """Queries the status of the selected job. 
+
+    Args:
+        job_key (str): Job key for the upload. 
+        api_key (str): Your API key. 
+
+    Returns:
+        str: Current status. 
+    """
     headers = {
         'accept': 'application/json',
         'api-key': api_key,
@@ -50,7 +85,14 @@ def get_status(job_key, api_key):
 
     return status 
     
-def download_result(job_key, api_key, file_dest): 
+def download_result(job_key: str, api_key: str, file_dest: str) -> None: 
+    """Downloads the ZIP containing the GML report. 
+
+    Args:
+        job_key (str): Job key for the upload. 
+        api_key (str): Your API key. 
+        file_dest (str): Name for the ZIP in the Reports folder. 
+    """
     headers = {
         'accept': 'application/json',
         'api-key': api_key,
@@ -64,7 +106,9 @@ def download_result(job_key, api_key, file_dest):
             shutil.copyfileobj(r.raw, f)
             
             
-def main(): 
+def get_report() -> None: 
+    """Example for the report generation. 
+    """
     logger = get_logger(__name__) 
     api_key = "[...]" 
     gml_file = "test2.gml" 
@@ -85,10 +129,7 @@ def main():
 
     logger.info(f"Downloading results to {Path('Reports', file_dest)}.")
     download_result(job_key, api_key, file_dest) 
-        
-    
-    
     
     
 if __name__ == "__main__": 
-    main() 
+    get_report() 
