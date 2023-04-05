@@ -2,10 +2,10 @@
 GML/
 
 # Reports 
-Logs/
+Reports/*.zip
 
 # Logs 
-Logs/ 
+Logs/*.log
 
 # General 
 .idea/
