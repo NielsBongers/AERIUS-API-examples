@@ -1,0 +1,11 @@
+# GML files
+GML/
+
+# Reports 
+Logs/
+
+# Logs 
+Logs/ 
+
+# General 
+.idea/
