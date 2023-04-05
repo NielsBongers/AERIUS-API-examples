@@ -14,7 +14,7 @@ It usually takes around a minute to run everything. Once it's done, the service 
 
 ## Future changes 
 
-I may add command line arguments to make it easier to use. However, given the current simplicity of the code, editing it directly is probably preferable. 
+I may add command line arguments to make it easier to use. However, given the current simplicity of the code, editing it directly is probably preferable. I haven't looked into the GML file output much yet - that could be a nice extension to the code. 
 
 ## Requesting API key 
 
